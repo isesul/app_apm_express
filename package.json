@@ -1,0 +1,31 @@
+{
+  "name": "app_apm_express",
+  "version": "1.0.0",
+  "description": "Test para pruebas netprovider",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index.js | pino-pretty",
+    "dev": "nodemon index.js | pino-pretty",
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "author": "bsegura@netprovider.ai",
+  "license": "ISC",
+  "dependencies": {
+    "@elastic/ecs-pino-format": "^1.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "pino": "^9.4.0",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "pino-pretty": "^11.2.2",
+    "supertest": "^7.0.0"
+  }
+}
