@@ -1,8 +1,11 @@
 require('dotenv').config()
 const logger = require('./logger')
 const apm = require('./apm')
+const metrics = require('./metrics')
 
 const requestLogger = (request, response, next) => {
+  metrics.incrementActiveRequests();
+  
   const logInfo = {
     method: request.method,
     path: request.path,
@@ -21,9 +24,9 @@ const requestLogger = (request, response, next) => {
     username: request.user ? request.user.username : undefined,
   })
 
-  // Capturar el tiempo de respuesta
   const start = Date.now()
   response.on('finish', () => {
+    metrics.decrementActiveRequests();
     const duration = Date.now() - start
     const logResponse = {
       statusCode: response.statusCode,

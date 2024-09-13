@@ -11,6 +11,9 @@ const { connectToDatabase } = require('./utils/db')
 logger.info('Conectando a la base de datos', { url: config.DATABASE_URL })
 connectToDatabase()
 
+apm.registerMetric('server_uptime', () => process.uptime())
+apm.registerMetric('memory_usage', () => process.memoryUsage().heapUsed)
+
 app.use(apm.middleware.connect())
 app.use(cors())
 app.use(express.static('dist'))
