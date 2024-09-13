@@ -1,4 +1,5 @@
 const logger = require('./logger')
+const apm = require('./apm')
 
 const requestLogger = (request, response, next) => {
   logger.info('HTTP Request', {
@@ -18,6 +19,8 @@ const errorHandler = (error, request, response, next) => {
     message: error.message,
     stack: error.stack
   })
+
+  apm.captureError(error)
 
   if (error.name === 'CastError') {
     return response.status(400).send({ error: 'malformatted id' })

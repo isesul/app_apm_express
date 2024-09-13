@@ -8,5 +8,7 @@ services:
     environment:
       - NODE_ENV=production
       - DATABASE_URL=sqlite:/app/database.sqlite
+      - ELASTIC_APM_SECRET_TOKEN=your_apm_secret_token
+      - ELASTIC_APM_SERVER_URL=https://elastic.netprovider.cl:8200
     volumes:
       - ./database.sqlite:/app/database.sqlite

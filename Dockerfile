@@ -16,8 +16,11 @@ COPY . .
 # Expone el puerto en el que se ejecuta la aplicación
 EXPOSE 3001
 
-# Define la variable de entorno para la base de datos
+# Define las variables de entorno
 ENV DATABASE_URL=sqlite:/app/database.sqlite
+ENV ELASTIC_APM_SECRET_TOKEN=your_apm_secret_token
+ENV ELASTIC_APM_SERVER_URL=https://elastic.netprovider.cl:8200
+env NODE_ENV=production
 
 # Comando para ejecutar la aplicación
 CMD ["npm", "start"]
