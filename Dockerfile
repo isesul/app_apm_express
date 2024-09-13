@@ -21,6 +21,7 @@ ENV DATABASE_URL=sqlite:/app/database.sqlite
 ENV ELASTIC_APM_SECRET_TOKEN=your_apm_secret_token
 ENV ELASTIC_APM_SERVER_URL=https://elastic.netprovider.cl:8200
 env NODE_ENV=production
+env SERVICE_NAME=app_apm_express
 
 # Comando para ejecutar la aplicación
 CMD ["npm", "start"]
